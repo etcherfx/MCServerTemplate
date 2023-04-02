@@ -26,7 +26,7 @@ download() {
         wget -O server.jar "https://api.papermc.io/v2/projects/paper/versions/$VERSION/builds/$BUILD/downloads/paper-$VERSION-$BUILD.jar"
         echo "Paper downloaded"
     elif [ "$SERVER" = "magma" ]; then
-        wget -O server.jar "https://api.magmafoundation.org/v2/projects/magma/versions/$VERSION/builds/$BUILD/downloads/magma-$VERSION-$BUILD.jar"
+        wget -O server.jar "https://api.magmafoundation.org/api/v2/$VERSION/latest/download"
         echo "Magma downloaded"
     fi
 
