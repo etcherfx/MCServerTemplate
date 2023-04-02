@@ -12,30 +12,30 @@ download() {
     purpur | magma) ;;
     *) read -p "Enter the build number: " BUILD ;;
     esac
-    echo By executing this script you agree to the JRE License, the PaperMC license,
-    echo the Mojang Minecraft EULA,
-    echo the NPM license, the MIT license,
-    echo and the licenses of all packages used \in this project.
+    echo By executing this script you agree to all the licenses of the packages used \in this project.
     echo Press Ctrl+C \if you \do not agree to any of these licenses.
     echo Press Enter to agree.
     read -s agree_text
     echo Thank you \for agreeing, the download will now begin.
-    if [ "$SERVER" = "purpur" ]; then
+    case "$SERVER" in
+    purpur)
         wget -O server.jar "https://api.purpurmc.org/v2/purpur/$VERSION/latest/download"
         echo "Purpur downloaded"
-    elif [ "$SERVER" = "paper" ]; then
+        ;;
+    paper)
         wget -O server.jar "https://api.papermc.io/v2/projects/paper/versions/$VERSION/builds/$BUILD/downloads/paper-$VERSION-$BUILD.jar"
         echo "Paper downloaded"
-    elif [ "$SERVER" = "magma" ]; then
+        ;;
+    magma)
         wget -O server.jar "https://api.magmafoundation.org/api/v2/$VERSION/latest/download"
         echo "Magma downloaded"
-    fi
-
+        ;;
+    esac
     echo "eula=true" >eula.txt
-    echo Agreed to Mojang EULA
-    wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-    unzip ngrok.zip
-    rm -rf ngrok.zip
+    echo "Agreed to Mojang EULA"
+    wget -O ngrok.zip "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+    unzip -o ngrok.zip
+    rm -f ngrok.zip
     echo "Download complete"
 }
 
