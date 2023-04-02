@@ -30,46 +30,45 @@
 
   <img src="projectInfo/replitTools.png" style="border-radius: 10px;" width="350">
 
-- Create a new secret called `ngrok_region` and input one of the regional codes from the list below as the value (us, eu, ap, au, sa, jp, in).
+- Create a new secret called `ngrok_region` and input one of the regional codes from the list below as the value.
 
   > _Choose the closest region for better network connectivity._
 
-  ```
-  us - United States (Ohio)
-  eu - Europe (Frankfurt)
-  ap - Asia/Pacific (Singapore)
-  au - Australia (Sydney)
-  sa - South America (Sao Paulo)
-  jp - Japan (Tokyo)
-  in - India (Mumbai)
-  ```
+  | Region                    | Code |
+  | ------------------------- | ---- |
+  | United States (Ohio)      | `us` |
+  | Europe (Frankfurt)        | `eu` |
+  | Asia/Pacific (Singapore)  | `ap` |
+  | Australia (Sydney)        | `au` |
+  | South America (Sao Paulo) | `sa` |
+  | Japan (Tokyo)             | `jp` |
+  | India (Mumbai)            | `in` |
 
   <img src="projectInfo/replitSecrets.png" style="border-radius: 10px;" width="350">
 
-- Create another secret called `ngrok_token` and input your ngrok authtoken as the value.
+- Create another secret called `ngrok_token` and input your [ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) as the value.
 
   > _If you don't have a ngrok authtoken, you can [visit here](https://dashboard.ngrok.com/get-started/your-authtoken) and make an account to get your token._
 
   <img src="projectInfo/authToken.png" style="border-radius: 10px;" width="350">
 
 - Run the repl and follow the instructions on the console.
-- When you get to entering the build number for the server software, here are some recommended ones:
-  - Paper:
-    | Minecraft Version | Build # |
-    | --- | --- |
-    | `1.19.4` | `484` |
-    | `1.18.2` | `388` |
-    | `1.17.1` | `411` |
-    | `1.16.5` | `794` |
-    | `1.15.2` | `393` |
-    | `1.14.4` | `245` |
-    | `1.13.2` | `657` |
-    | `1.12.2` | `1620` |
-    | `1.11.2` | `1106` |
-    | `1.10.2` | `918` |
-    | `1.9.4` | `775` |
-    | `1.8.8` | `445` |
-    > _To get more build numbers for paper, visit [here](https://papermc.io/downloads/all)_
+- If you chose paper as the server software, here are some recommended build numbers for each Minecraft version:
+  | Minecraft Version | Build # |
+  | --- | --- |
+  | `1.19.4` | `484` |
+  | `1.18.2` | `388` |
+  | `1.17.1` | `411` |
+  | `1.16.5` | `794` |
+  | `1.15.2` | `393` |
+  | `1.14.4` | `245` |
+  | `1.13.2` | `657` |
+  | `1.12.2` | `1620` |
+  | `1.11.2` | `1106` |
+  | `1.10.2` | `918` |
+  | `1.9.4` | `775` |
+  | `1.8.8` | `445` |
+  > _To get a list of all build numbers for paper, visit [here](https://papermc.io/downloads/all)_
 - Once the console displays `Done! For help, type "help"`, navigate to `status.log` and copy the IP address on `line 7` and enter it inside of Minecraft. The IP should be something like `tcp://9.tcp.eu.ngrok.io:46797` and you want to copy the whole address **EXCEPT** the `tcp://` part.
 
 ## Server Optimization
