@@ -50,6 +50,8 @@
 
   > _If you don't have a ngrok authtoken, you can [visit here](https://dashboard.ngrok.com/get-started/your-authtoken) and make an account to get your token._
 
+  <img src="projectInfo/authToken.png" style="border-radius: 10px;" width="350">
+
 - Run the repl and follow the instructions on the console.
 - When you get to entering the build number for the server software, here are some recommended ones:
   - Paper:
