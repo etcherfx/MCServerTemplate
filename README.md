@@ -22,6 +22,10 @@
 
 ## Making the Server
 
+- Open the `Deploy to replit` button in a new tab and press `Import from Github`
+
+  <img src="projectInfo/importGithub.png" style="border-radius: 10px;" width="350">
+
 - Click on the `Secrets` button in the tools section on the far left side of your screen
 
   <img src="projectInfo/replitTools.png" style="border-radius: 10px;" width="350">
