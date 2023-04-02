@@ -18,7 +18,7 @@
 
 ## Deployment
 
-[![Deploy to Replit](https://img.shields.io/website?color=cyan&down_message=Deploy%20to%20Replit&label=%20&logo=replit&up_message=Deploy%20to%20Replit&url=https%3A%2F%2Freplit.com)](https://replit.com/github/etcherfx/MCServerTemplate)
+[![Deploy to Replit](https://img.shields.io/website?color=&down_message=Deploy%20to%20Replit&label=%20&logo=replit&up_message=Deploy%20to%20Replit&url=https%3A%2F%2Freplit.com)](https://replit.com/github/etcherfx/MCServerTemplate)
 
 ## Making the Server
 
@@ -44,11 +44,9 @@
 
 - Create another secret called `ngrok_token` and input your ngrok authtoken as the value.
 
-  > _If you don't have a ngrok authtoken, you can [visit here](https://dashboard.ngrok.com) and make an account to get your token._
+  > _If you don't have a ngrok authtoken, you can [visit here](https://dashboard.ngrok.com/get-started/your-authtoken) and make an account to get your token._
 
 - Run the repl and follow the instructions on the console.
-
-  > _If your server is running on Purpur, ignore the build number input._
 
 - Once the console displays `Done! For help, type "help"`, navigate to `status.log` and copy the IP address on `line 7` and enter it inside of Minecraft. The IP should be something like `tcp://9.tcp.eu.ngrok.io:46797` and you want to copy the whole address **EXCEPT** the `tcp://` part.
 
