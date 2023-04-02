@@ -8,9 +8,10 @@ cd server
 download() {
     read -p "Is your server Purpur, Paper or Magma (purpur/paper/magma): " SERVER
     read -p "Enter your server version: " VERSION
-    if [ "$SERVER" != "purpur" ]; then
-        read -p "Enter the build number: " BUILD
-    fi
+    case "$SERVER" in
+    purpur | magma) ;;
+    *) read -p "Enter the build number: " BUILD ;;
+    esac
     echo By executing this script you agree to the JRE License, the PaperMC license,
     echo the Mojang Minecraft EULA,
     echo the NPM license, the MIT license,
