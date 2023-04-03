@@ -18,17 +18,39 @@
 
 ## Deployment
 
-[![Deploy to Replit](https://img.shields.io/website?color=&down_message=Deploy%20to%20Replit&label=%20&logo=replit&up_message=Deploy%20to%20Replit&url=https%3A%2F%2Freplit.com)](https://replit.com/github/etcherfx/MCServerTemplate)
+### Automatic method
+
+<a href="https://replit.com/github/etcherfx/MCServerTemplate" target="_blank"><img src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" alt="Run on Replit"></a>
+
+- Open the `Run on replit` button in a new tab and press `Import from Github`
+
+  <img src="projectInfo/importGithub.png" width="550">
+
+### Manual Method
+
+- Create a new `Bash` repl
+
+   <img src="projectInfo/createRepl.png" width="450">
+
+- Type the following commands in order into the shell:
+  ```
+  git clone https://github.com/etcherfx/MCServerTemplate.git
+  ```
+  ```
+  shopt -s dotglob
+  ```
+  ```
+  mv MCServerTemplate/* MCServerTemplate/../
+  ```
+  ```
+  rm -rf MCServerTemplate main.sh
+  ```
 
 ## Making the Server
 
-- Open the `Deploy to replit` button in a new tab and press `Import from Github`
-
-  <img src="projectInfo/importGithub.png" style="border-radius: 10px;" width="350">
-
 - Click on the `Secrets` button in the tools section on the far left side of your screen
 
-  <img src="projectInfo/replitTools.png" style="border-radius: 10px;" width="350">
+  <img src="projectInfo/replitTools.png" width="350">
 
 - Create a new secret called `ngrok_region` and input one of the regional codes from the list below as the value.
 
@@ -44,13 +66,13 @@
   | Japan (Tokyo)             | `jp` |
   | India (Mumbai)            | `in` |
 
-  <img src="projectInfo/replitSecrets.png" style="border-radius: 10px;" width="350">
+  <img src="projectInfo/replitSecrets.png" width="450">
 
 - Create another secret called `ngrok_token` and input your [ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) as the value.
 
   > _If you don't have a ngrok authtoken, you can [visit here](https://dashboard.ngrok.com/get-started/your-authtoken) and make an account to get your token._
 
-  <img src="projectInfo/authToken.png" style="border-radius: 10px;" width="350">
+  <img src="projectInfo/authToken.png" width="350">
 
 - Run the repl and follow the instructions on the console.
 - If you chose paper as the server software, here are some recommended build numbers for each Minecraft version:
@@ -80,7 +102,7 @@
 
 - In the files section on replit, click the three dots and click `Show hidden files`
 
-  <img src="projectInfo/replitHiddenFiles.png" style="border-radius: 10px;" width="350">
+  <img src="projectInfo/replitHiddenFiles.png" width="350">
 
 - Navigate to `replit.nix` and follow these intructions:
   - For Minecraft 1.16.x and below, do not change anything.
