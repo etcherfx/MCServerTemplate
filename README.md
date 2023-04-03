@@ -46,6 +46,16 @@
   rm -rf MCServerTemplate main.sh
   ```
 
+## Setting Java Versions
+
+- In the files section on replit, click the three dots and click `Show hidden files`
+
+  <img src="projectInfo/replitHiddenFiles.png" width="350">
+
+- Navigate to `replit.nix` and follow these intructions:
+  - For Minecraft 1.16.x and below, do not change anything.
+  - For Minecraft 1.17.x and above, make sure to change `pkgs.openjdk8-bootstrap` to `pkgs.graalvm17-ce`
+
 ## Making the Server
 
 - Click on the `Secrets` button in the tools section on the far left side of your screen
@@ -97,13 +107,3 @@
 
 - Boost your repl
 - Follow [this](https://github.com/YouHaveTrouble/minecraft-optimization) server optimization guide
-
-## Setting Java Versions
-
-- In the files section on replit, click the three dots and click `Show hidden files`
-
-  <img src="projectInfo/replitHiddenFiles.png" width="350">
-
-- Navigate to `replit.nix` and follow these intructions:
-  - For Minecraft 1.16.x and below, do not change anything.
-  - For Minecraft 1.17.x and above, make sure to change `pkgs.openjdk8-bootstrap` to `pkgs.graalvm17-ce`
