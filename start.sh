@@ -6,12 +6,6 @@ mkdir -p server
 cd server
 
 download() {
-    read -p "Is your server Purpur, Paper or Magma (purpur/paper/magma): " SERVER
-    read -p "Enter your server version: " VERSION
-    case "$SERVER" in
-    purpur | magma) ;;
-    *) read -p "Enter the build number: " BUILD ;;
-    esac
     echo By executing this script you agree to all the licenses of the packages used \in this project.
     echo Press Ctrl+C \if you \do not agree to any of these licenses.
     echo Press Enter to agree.
