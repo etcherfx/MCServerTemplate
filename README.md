@@ -83,13 +83,19 @@
   | Key           | Value                                                                                                |
   | ------------- | ---------------------------------------------------------------------------------------------------- |
   | `ngrok_token` | Your [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) for ngrok.                  |
-  | `SERVER`      | The server software. e.g `purpur`                                                                    |
+  | `SERVER`      | The server software in all lowercase. e.g `purpur`                                                   |
   | `VERSION`     | Version of Minecraft your server is running on.                                                      |
   | `BUILD`       | The build number of your server software. _Only use this if you have `paper` as the server software_ |
 
   > _If you don't have a ngrok authtoken, you can [visit here](https://dashboard.ngrok.com/get-started/your-authtoken) and make an account to get your token._
 
   <img src="projectInfo/authToken.png" width="350">
+
+- List of server software supported:
+
+  - [Purpur](https://purpurmc.org/)
+  - [Paper](https://papermc.io/)
+  - [Magma](https://magmafoundation.org/)
 
 - Here are some recommended build numbers for `paper`:
 
