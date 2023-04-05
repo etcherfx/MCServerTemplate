@@ -4,7 +4,7 @@
 
 # MCServerTemplate
 
-<h3>An easily deployable Minecraft server template.</h3>
+<span style="font-size:18px;">An easily deployable Minecraft server template.</span>
 
 [![CodeFactor](https://www.codefactor.io/repository/github/etcherfx/mcservertemplate/badge/main?style=for-the-badge)](https://www.codefactor.io/repository/github/etcherfx/mcservertemplate/overview/main)
 [![GitHub Release](https://img.shields.io/github/v/release/etcherfx/MCServerTemplate?include_prereleases&style=for-the-badge)](https://github.com/etcherfx/MCServerTemplate/releases/latest) <br>
