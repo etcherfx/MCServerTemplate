@@ -24,7 +24,7 @@
 
 ## Deployment
 
-### Automatic method
+### Method 1 - Deploy from Github:
 
 <a href="https://replit.com/github/etcherfx/MCServerTemplate" target="_blank"><img src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" alt="Run on Replit"></a>
 
@@ -32,24 +32,19 @@
 
   <img src="projectInfo/importGithub.png" width="550">
 
-### Manual Method
+### Method 2 - Manual Cloning:
 
 - Create a new `Bash` repl
 
    <img src="projectInfo/createRepl.png" width="450">
 
-- Type the following commands in order into the shell:
+- Type the following command into the shell:
   ```
-  git clone https://github.com/etcherfx/MCServerTemplate.git
+  git clone https://github.com/etcherfx/MCServerTemplate.git && shopt -s dotglob && mv MCServerTemplate/* MCServerTemplate/../ && rm -rf MCServerTemplate main.sh
   ```
+  Or if you want to clone a specific release:
   ```
-  shopt -s dotglob
-  ```
-  ```
-  mv MCServerTemplate/* MCServerTemplate/../
-  ```
-  ```
-  rm -rf MCServerTemplate main.sh
+  wget https://github.com/etcherfx/MCServerTemplate/releases/download/$VERSION/MCServerTemplate.zip && unzip MCServerTemplate.zip && shopt -s dotglob && mv MCServerTemplate/* MCServerTemplate/../ && rm -rf MCServerTemplate MCServerTemplate.zip main.sh
   ```
 
 ## Setting Java Versions
