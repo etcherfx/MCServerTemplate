@@ -42,10 +42,6 @@
   ```
   git clone https://github.com/etcherfx/MCServerTemplate.git && shopt -s dotglob && mv MCServerTemplate/* MCServerTemplate/../ && rm -rf MCServerTemplate main.sh
   ```
-  Or if you want to clone a specific release:
-  ```
-  wget https://github.com/etcherfx/MCServerTemplate/releases/download/$VERSION/MCServerTemplate.zip && unzip MCServerTemplate.zip && shopt -s dotglob && mv MCServerTemplate/* MCServerTemplate/../ && rm -rf MCServerTemplate MCServerTemplate.zip main.sh
-  ```
 
 ## Setting Java Versions
 
