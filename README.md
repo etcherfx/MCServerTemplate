@@ -7,9 +7,10 @@
 <span style="font-size:18px;">An easily deployable Minecraft server template.</span>
 
 [![CodeFactor](https://www.codefactor.io/repository/github/etcherfx/mcservertemplate/badge/main?style=for-the-badge)](https://www.codefactor.io/repository/github/etcherfx/mcservertemplate/overview/main)
-[![GitHub Release](https://img.shields.io/github/v/release/etcherfx/MCServerTemplate?include_prereleases&style=for-the-badge)](https://github.com/etcherfx/MCServerTemplate/releases/latest) <br>
-[![GitHub Downloads](https://img.shields.io/github/downloads/etcherfx/MCServerTemplate/total?style=for-the-badge)](https://github.com/etcherfx/MCServerTemplate/releases/latest)
+[![License](https://img.shields.io/github/license/etcherfx/MCServerTemplate?style=for-the-badge)](https://github.com/etcherfx/MCServerTemplate/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/etcherfx/MCServerTemplate?style=for-the-badge)](https://github.com/etcherfx/MCServerTemplate/issues) <br>
+[![GitHub Release](https://img.shields.io/github/v/release/etcherfx/MCServerTemplate?include_prereleases&style=for-the-badge)](https://github.com/etcherfx/MCServerTemplate/releases/latest) 
+[![GitHub Downloads](https://img.shields.io/github/downloads/etcherfx/MCServerTemplate/total?style=for-the-badge)](https://github.com/etcherfx/MCServerTemplate/releases/latest) <br>
 
 </div>
 
