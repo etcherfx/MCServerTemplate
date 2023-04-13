@@ -6,6 +6,7 @@ mkdir -p server
 cd server
 
 download() {
+    echo "MCServerTemplate v0.1.0"
     echo "By executing this script you agree to all the licenses of the packages used in this project."
     echo "Press Ctrl+C if you do not agree to any of these licenses."
     echo "Press Enter to agree."
@@ -24,6 +25,9 @@ download() {
         wget -O server.jar "https://api.magmafoundation.org/api/v2/$VERSION/latest/download"
         echo "Magma downloaded"
         ;;
+    *)
+        echo "No server specified."
+        exit 1
     esac
     echo "eula=true" >eula.txt
     echo "Agreed to Mojang EULA"
