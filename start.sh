@@ -39,22 +39,21 @@ download() {
         echo -e "${BLUE}Downloading Purpur...${NC}"
         echo ""
         wget -O server.jar "https://api.purpurmc.org/v2/purpur/$VERSION/latest/download"
-        echo -e "${GREEN}Purpur has been successfully downloaded.${NC}"
         ;;
     paper)
         echo -e "${BLUE}Downloading Paper...${NC}"
         echo ""
         wget -O server.jar "https://api.papermc.io/v2/projects/paper/versions/$VERSION/builds/$BUILD/downloads/paper-$VERSION-$BUILD.jar"
-        echo -e "${GREEN}Paper has been successfully downloaded.${NC}"
         ;;
     magma)
         echo -e "${BLUE}Downloading Magma...${NC}"
         echo ""
         wget -O server.jar "https://api.magmafoundation.org/api/v2/$VERSION/latest/download"
-        echo -e "${GREEN}Magma has been successfully downloaded.${NC}"
         ;;
     esac
 
+    serverName="$(echo "$SERVER" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')"
+    echo -e "${GREEN}${serverName} has been successfully downloaded.${NC}"
     echo "eula=true" >eula.txt
     echo ""
     echo -e "${BLUE}Downloading ngrok...${NC}"
