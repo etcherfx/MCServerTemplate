@@ -50,7 +50,7 @@
 
 - Navigate to `replit.nix` and follow these intructions:
   - For Minecraft 1.16.x and below, do not change anything.
-  - For Minecraft 1.17.x and above, make sure to change `pkgs.openjdk8-bootstrap` to `pkgs.openjdk18-bootstrap`
+  - For Minecraft 1.17.x and above, make sure to change `pkgs.openjdk8-bootstrap` to `pkgs.openjdk17-bootstrap`
 
 ## Creating Enviornment Variables
 
