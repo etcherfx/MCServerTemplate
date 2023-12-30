@@ -44,7 +44,7 @@
 
 ## Setting Java Versions
 
-- In the files section on replit, click the three dots and click `Show hidden files`
+- In the files section on replit, click the three dots and hit `Show hidden files`
 
   <img src="projectInfo/replitHiddenFiles.png" width="350">
 
@@ -120,5 +120,4 @@
 
 ## Server Optimization
 
-- Boost your repl
 - Follow [this](https://github.com/YouHaveTrouble/minecraft-optimization) server optimization guide
