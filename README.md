@@ -116,7 +116,7 @@
 ## Running the Server
 
 - Run the repl and follow the instructions on the console
-- Once the console displays `Done! For help, type "help"`, navigate to `status.log` and copy the IP address on `line 7` and enter it inside of Minecraft. The IP should be something like `tcp://9.tcp.eu.ngrok.io:46797` and you want to copy the whole address **EXCEPT** the `tcp://` part.
+- Once the console displays `Done! For help, type "help"`, navigate to `status.log` and copy the IP address on `line 7` and enter it inside of Minecraft. The address should be something like `tcp://9.tcp.eu.ngrok.io:46797` and you want to copy IP part, which is the entire address **EXCEPT** the `tcp://` part.
 
 ## Server Optimization
 
