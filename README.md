@@ -29,7 +29,7 @@
 
 - Open the `Run on replit` button in a new tab and press `Import from Github`
 
-  <img src="projectInfo/importGithub.png" width="550">
+  <img src="projectInfo/importGithub.png" width="450">
 
 ### Method 2 - Manual Cloning:
 
@@ -56,7 +56,7 @@
 
 - Click on the `Secrets` button in the tools section on the far left side of your screen
 
-  <img src="projectInfo/replitTools.png" width="350">
+  <img src="projectInfo/replitTools.png" width="250">
 
 - Create a new secret called `ngrok_region` and input one of the regional codes from the list below as the value:
 
@@ -89,9 +89,9 @@
 
 - List of server software supported:
 
-  - [Purpur](https://purpurmc.org/)
-  - [Paper](https://papermc.io/)
-  - [Magma](https://magmafoundation.org/)
+  - [Purpur](https://purpurmc.org/) (1.16.1 and above)
+  - [Paper](https://papermc.io/) (1.8.8 and above)
+  - [Magma](https://magma.c0d3m4513r.com/) (1.12.2, 1.16.5, 1.19.3, 1.20.1)
 
 - Here are some recommended build numbers for `paper`:
 

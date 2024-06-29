@@ -48,7 +48,7 @@ download() {
     magma)
         echo -e "${BLUE}Downloading Magma...${NC}"
         echo ""
-        wget -O server.jar "https://api.magmafoundation.org/api/v2/$VERSION/latest/download"
+        wget -O server.jar "https://magma.c0d3m4513r.com/mirror/$VERSION/latest_server.jar"
         ;;
     esac
 
