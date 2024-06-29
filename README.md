@@ -54,9 +54,15 @@
 
   <img src="projectInfo/replitNix.png" width="250">
 
-- Follow the instructions below to set the Java version you want for your server:
-  - If you want your server version to be Minecraft 1.16.x or below, do not change anything.
-  - If you want your server version to be Minecraft 1.17.x or above, make sure to change `pkgs.openjdk8-bootstrap` to `pkgs.openjdk17-bootstrap`
+- Choose the Java version you want to use from below and replace the default Java version with the one you want to use:
+
+  > _The default Java version is `pkgs.openjdk8-bootstrap`_
+
+  | Minecraft Version | Java Version               |
+  | ----------------- | -------------------------- |
+  | `1.21+`           | `pkgs.jdk21_headless`      |
+  | `1.17 - 1.20`     | `pkgs.openjdk17-bootstrap` |
+  | `1.16-`           | `pkgs.openjdk8-bootstrap`  |
 
 ## Creating Enviornment Variables
 
@@ -68,30 +74,17 @@
 
   <img src="projectInfo/replitSecrets.png" width="550">
 
-- Create a new secret called `ngrok_region` and input one of the regional codes from the list below as the value:
+- Create a new secret with the key named `ngrok_token` and the value as your [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken)
 
-  > _Choose the closest region for better network connectivity._
-
-  | Region                    | Code |
-  | ------------------------- | ---- |
-  | United States (Ohio)      | `us` |
-  | Europe (Frankfurt)        | `eu` |
-  | Asia/Pacific (Singapore)  | `ap` |
-  | Australia (Sydney)        | `au` |
-  | South America (Sao Paulo) | `sa` |
-  | Japan (Tokyo)             | `jp` |
-  | India (Mumbai)            | `in` |
-
-  <img src="projectInfo/ngrokRegion.png" width="450">
+  > _Note: You need to create an ngrok account to get an authtoken_
 
 - Do the same for the variables in the list below:
 
-  | Key           | Value                                                                                                                              |
-  | ------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-  | `ngrok_token` | Your [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) for ngrok. _You need to create an ngrok account for this_ |
-  | `SERVER`      | The server software in all lowercase. e.g `purpur`                                                                                 |
-  | `VERSION`     | Version of Minecraft your server is running on. e.g `1.19.4`                                                                       |
-  | `BUILD`       | The build number of your server software. _Only use this if you have `paper` as the server software_                               |
+  | Key       | Value                                                                                                |
+  | --------- | ---------------------------------------------------------------------------------------------------- |
+  | `SERVER`  | The server software in all lowercase. e.g `purpur`                                                   |
+  | `VERSION` | Version of Minecraft your server is running on. e.g `1.19.4`                                         |
+  | `BUILD`   | The build number of your server software. _Only use this if you have `paper` as the server software_ |
 
 - List of server software supported:
 

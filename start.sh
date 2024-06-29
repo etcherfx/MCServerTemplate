@@ -103,23 +103,27 @@ while true; do
     requireFile "server.jar"
     requireExec "ngrok"
     requireEnv "ngrok_token"
-    requireEnv "ngrok_region"
     mkdir -p ./logs
     touch ./logs/temp
     rm ./logs/*
-    echo -e "${GREEN}Starting ngrok tunnel in region: $ngrok_region"
-    ./ngrok authtoken $ngrok_token >/dev/null 2>&1
-    ./ngrok tcp -region $ngrok_region --log=stdout 25565 >$root/status.log &
+    if ! pgrep -x "ngrok" >/dev/null; then
+        echo -e "${GREEN}Starting ngrok tunnel...${NC}"
+        ./ngrok authtoken $ngrok_token >/dev/null 2>&1
+        ./ngrok tcp --log=stdout 25565 >$root/status.log &
+    fi
     echo ""
     echo -e "${CYAN}Minecraft server starting, please wait...${NC}"
     echo ""
     echo -e "${GREEN}=====================================================================${NC}"
     echo ""
     COMMON_JVM_FLAGS="-Xms128M -Xmx512M -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -XX:+UseStringDeduplication -XX:+UseAES -XX:+UseAESIntrinsics -XX:UseSSE=4 -XX:AllocatePrefetchStyle=1 -XX:+UseLoopPredicate -XX:+RangeCheckElimination -XX:+EliminateLocks -XX:+DoEscapeAnalysis -XX:+UseCodeCacheFlushing -XX:+OptimizeStringConcat -XX:+UseCompressedOops -XX:+UseThreadPriorities -XX:+TrustFinalNonStaticFields -XX:+UseInlineCaches -XX:+RewriteBytecodes -XX:+RewriteFrequentPairs -XX:+UseNUMA -XX:-DontCompileHugeMethods -XX:+UseFPUForSpilling -XX:+UseNewLongLShift -XX:+UseXMMForArrayCopy -XX:+UseXmmI2D -XX:+UseXmmI2F -XX:+UseXmmLoadAndClearUpper -XX:+UseXmmRegToRegMoveAll -Dfile.encoding=UTF-8 -Djava.security.egd=file:/dev/urandom"
+    JAVA_CMD="java $COMMON_JVM_FLAGS -jar server.jar nogui"
 
-    if [[ "$VERSION" =~ ^1\.(17|18|19|20)\. ]]; then
-        java $COMMON_JVM_FLAGS --add-modules jdk.incubator.vector -XX:UseAVX=2 -Xlog:async -jar server.jar nogui
-    elif [[ "$VERSION" =~ ^1\.(8|9|10|11|12|13|14|15|16)\. ]]; then
-        java $COMMON_JVM_FLAGS -XX:-UseBiasedLocking -XX:UseAVX=3 -jar server.jar nogui
+    if [[ "$VERSION" =~ ^1\.(17|18|19|20|21)(\.|$) ]]; then
+        JAVA_CMD="java $COMMON_JVM_FLAGS --add-modules jdk.incubator.vector -XX:UseAVX=2 -Xlog:async -jar server.jar nogui"
+    elif [[ "$VERSION" =~ ^1\.(8|9|10|11|12|13|14|15|16)(\.|$) ]]; then
+        JAVA_CMD="java $COMMON_JVM_FLAGS -XX:-UseBiasedLocking -XX:UseAVX=3 -jar server.jar nogui"
     fi
+
+    $JAVA_CMD
 done
