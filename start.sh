@@ -58,7 +58,7 @@ download() {
     echo ""
     echo -e "${BLUE}Downloading ngrok...${NC}"
     echo ""
-    wget -O ngrok.zip "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip"
+    wget -O ngrok.zip "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip"
     unzip -o ngrok.zip >/dev/null 2>&1
     rm -f ngrok.zip >/dev/null 2>&1
     echo -e "${GREEN}ngrok has been successfully downloaded."
