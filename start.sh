@@ -16,7 +16,7 @@ display_title() {
     clear
     echo -e "${GREEN}====================================================================="
     echo ""
-    echo -e "                        MCServerTemplate v0.1.0                     "
+    echo -e "                        MCServerTemplate v0.2.0                     "
     echo ""
     echo -e "=====================================================================${NC}"
     echo ""
