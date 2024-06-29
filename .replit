@@ -1,4 +1,8 @@
-entrypoint = "start.sh"
+modules = ["bash", "nix"]
+run = ["bash", "start.sh"]
 
 [deployment]
-run = ["bash", "start.sh"]
+run = ["sh", "-c", "bash start.sh"]
+
+[nix]
+channel = "stable-24_05"
