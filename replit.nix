@@ -1,6 +1,6 @@
 { pkgs }: {
   deps = [
-    pkgs.openjdk-headless
+    pkgs.openjdk_headless
     pkgs.wget
     pkgs.unzip
     pkgs.python313
