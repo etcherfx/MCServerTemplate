@@ -25,11 +25,13 @@
 
 ### Deploy from Github:
 
-<a href="https://replit.com/github/etcherfx/MCServerTemplate" target="_blank"><img src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" alt="Run on Replit"></a>
+- Navigate to the [import page](https://replit.com/import/github) on Replit and paste the repository URL:
 
-- Open the `Run on replit` button in a new tab and press `Import from Github`
+  `https://github.com/etcherfx/MCServerTemplate`
 
-  <img src="projectInfo/importGithub.png" width="450">
+- Click on the `Import from GitHub` button
+
+  <img src="projectInfo/importGithub.webp" width="400">
 
 ## Setting Java Versions
 

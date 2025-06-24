@@ -1,5 +1,1 @@
-[deployment]
-run = ["sh", "-c", "bash start.sh"]
-
-[nix]
-channel = "stable-24_05"
+run = "bash main.sh"
