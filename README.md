@@ -23,24 +23,13 @@
 
 ## Deployment
 
-### Method 1 - Deploy from Github:
+### Deploy from Github:
 
 <a href="https://replit.com/github/etcherfx/MCServerTemplate" target="_blank"><img src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/replit.svg" alt="Run on Replit"></a>
 
 - Open the `Run on replit` button in a new tab and press `Import from Github`
 
   <img src="projectInfo/importGithub.png" width="450">
-
-### Method 2 - Manual Cloning:
-
-- Create a new `Bash` repl
-
-   <img src="projectInfo/createRepl.png" width="450">
-
-- Type the following command into the shell:
-  ```
-  git clone https://github.com/etcherfx/MCServerTemplate.git && shopt -s dotglob && mv MCServerTemplate/* MCServerTemplate/../ && rm -rf MCServerTemplate main.sh
-  ```
 
 ## Setting Java Versions
 
@@ -90,13 +79,13 @@
 
   - [Purpur](https://purpurmc.org/) (1.16.1 and above)
   - [Paper](https://papermc.io/) (1.8.8 and above)
-  - [Magma](https://magma.c0d3m4513r.com/) (1.12.2, 1.16.5, 1.19.3, 1.20.1)
 
 - Here are some recommended build numbers for `paper`:
 
   | Minecraft Version | Build # |
   | ----------------- | ------- |
-  | `1.20.6`          | `147`   |
+  | `1.21.4`          | `232`   |
+  | `1.20.6`          | `151`   |
   | `1.19.4`          | `550`   |
   | `1.18.2`          | `388`   |
   | `1.17.1`          | `411`   |

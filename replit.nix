@@ -1,8 +1,11 @@
 { pkgs }: {
-	deps = [
-    pkgs.openjdk8-bootstrap
+  deps = [
+    pkgs.openjdk-headless
     pkgs.wget
     pkgs.unzip
-    pkgs.python3Full
-	];
+    pkgs.python313
+    pkgs.bashInteractive
+    pkgs.nodePackages.bash-language-server
+    pkgs.man
+  ];
 }
