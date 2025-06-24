@@ -23,8 +23,6 @@
 
 ## Deployment
 
-### Deploy from Github:
-
 - Navigate to the [import page](https://replit.com/import/github) on Replit and paste the repository URL:
 
   `https://github.com/etcherfx/MCServerTemplate`
@@ -47,7 +45,7 @@
 
 - Choose the Java version you want to use from below and replace the default Java version with the one you want to use:
 
-  > _The default Java version is `pkgs.openjdk8-bootstrap`_
+  > _The default Java version is `pkgs.jdk21_headless`_
 
   | Minecraft Version | Java Version               |
   | ----------------- | -------------------------- |
@@ -59,7 +57,7 @@
 
 - Click on the `Secrets` button in the tools section on the far left side of your screen
 
-  <img src="projectInfo/replitTools.png" width="250">
+  <img src="projectInfo/tools.webp" width="400">
 
 - Click on the `New secret` button
 
