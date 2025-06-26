@@ -2,135 +2,75 @@
 
 set -e
 root=$PWD
-mkdir -p server
-cd server
+mkdir -p server && cd server
 
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-YELLOW="\033[1;33m"
-BLUE="\033[0;34m"
-CYAN="\033[0;36m"
-NC="\033[0m"
+R="\033[0;31m" G="\033[0;32m" Y="\033[1;33m" B="\033[0;34m" C="\033[0;36m" NC="\033[0m"
 
-display_title() {
+show_title() {
     clear
-    echo -e "${GREEN}====================================================================="
-    echo ""
-    echo -e "                        MCServerTemplate v0.3.0                     "
-    echo ""
-    echo -e "=====================================================================${NC}"
-    echo ""
+    echo -e "${G}=====================================================================\n\n                        MCServerTemplate v0.3.0\n\n=====================================================================${NC}\n"
 }
 
-download() {
-    display_title
-    echo "By executing this script you agree to all the licenses of the packages"
-    echo "used in this project."
-    echo ""
-    echo -e "${YELLOW}Press Ctrl+C if you do not agree to any of these licenses."
-    echo -e "Press Enter to agree.${NC}"
-    read -s agree_text
-    echo ""
-    echo "Thank you for agreeing, the download will now begin."
-    echo ""
+check_env() {
+    for var in "$@"; do
+        val=$(printenv "$var" 2>/dev/null || echo "")
+        [ -z "$val" ] && {
+            echo -e "${R}Environment variable $var not set.\nPlease read the README on setting environment variables.${NC}"
+            exit 1
+        }
+        eval "$var='$val'"
+    done
+}
 
+download_if_missing() {
+    [ -f server.jar ] && [ -f ngrok ] && [ -f eula.txt ] && return
+
+    show_title
+    echo -e "By executing this script you agree to all licenses.\n${Y}Press Ctrl+C to disagree, Enter to continue.${NC}"
+    read -s
+
+    echo -e "\n${B}Downloading ${SERVER^}...${NC}"
     case "${SERVER,,}" in
-    purpur)
-        echo -e "${BLUE}Downloading Purpur...${NC}"
-        echo ""
-        wget -O server.jar "https://api.purpurmc.org/v2/purpur/$VERSION/latest/download"
-        ;;
-    paper)
-        echo -e "${BLUE}Downloading Paper...${NC}"
-        echo ""
-        wget -O server.jar "https://api.papermc.io/v2/projects/paper/versions/$VERSION/builds/$BUILD/downloads/paper-$VERSION-$BUILD.jar"
-        ;;
+    purpur) wget -qO server.jar "https://api.purpurmc.org/v2/purpur/$VERSION/latest/download" ;;
+    paper) wget -qO server.jar "https://api.papermc.io/v2/projects/paper/versions/$VERSION/builds/$BUILD/downloads/paper-$VERSION-$BUILD.jar" ;;
     esac
 
-    serverName="$(echo "$SERVER" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')"
-    echo -e "${GREEN}${serverName} has been successfully downloaded.${NC}"
+    echo -e "${G}${SERVER^} downloaded.${NC}\n${B}Downloading ngrok...${NC}"
+    wget -qO ngrok.zip "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip"
+    unzip -oq ngrok.zip && rm ngrok.zip
+    chmod +x ngrok
     echo "eula=true" >eula.txt
-    echo ""
-    echo -e "${BLUE}Downloading ngrok...${NC}"
-    echo ""
-    wget -O ngrok.zip "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip"
-    unzip -o ngrok.zip >/dev/null 2>&1
-    rm -f ngrok.zip >/dev/null 2>&1
-    echo -e "${GREEN}ngrok has been successfully downloaded."
-    echo ""
-    echo -e "Downloads completed.${NC}"
-    echo ""
-}
-
-require() {
-    if [ ! $1 $2 ]; then
-        download
-    fi
-}
-
-requireFile() {
-    require -f $1 "File $1 required but not found"
-}
-
-requireEnv() {
-    var=$(python3 -c "import os;print(os.getenv('$1',''))")
-    if [ -z "${var}" ]; then
-        echo -e "${RED}Environment variable $1 not set."
-        echo "Please read the README on setting environment variables."
-        exit
-    fi
-    eval "$1=$var"
-}
-
-requireExec() {
-    requireFile "$1"
-    chmod +x "$1"
+    echo -e "${G}Downloads completed.${NC}\n"
 }
 
 while true; do
-    display_title
-    requireEnv "SERVER"
-    requireEnv "VERSION"
-    if [ "${SERVER,,}" == "paper" ]; then
-        requireEnv "BUILD"
-    fi
-    requireFile "eula.txt"
-    requireFile "server.jar"
-    requireExec "ngrok"
-    requireEnv "ngrok_token"
-    mkdir -p ./logs
-    touch ./logs/temp
-    rm ./logs/*
+    show_title
+
+    check_env SERVER VERSION ngrok_token
+    [ "${SERVER,,}" == "paper" ] && check_env BUILD
+
+    download_if_missing
+
+    mkdir -p logs && rm -f logs/*
     if ! pgrep -x "ngrok" >/dev/null; then
-        echo -e "${GREEN}Starting ngrok tunnel...${NC}"
-        ./ngrok authtoken $ngrok_token >/dev/null 2>&1
-        ./ngrok tcp --log=stdout 25565 >$root/status.log &
+        echo -e "${G}Starting ngrok tunnel...${NC}"
+        ./ngrok authtoken "$ngrok_token" &>/dev/null
+        ./ngrok tcp --log=stdout 25565 >"$root/status.log" &
+        sleep 2
 
-        echo -e "${YELLOW}Waiting for ngrok tunnel to establish...${NC}"
-        sleep 1
-
-        if [ -f "$root/status.log" ]; then
-            tunnel_url=$(sed -n '7p' "$root/status.log" | grep -o 'url=tcp://[^[:space:]]*' | cut -d'=' -f2 | sed 's/tcp:\/\///')
-            if [ ! -z "$tunnel_url" ]; then
-                echo -e "${GREEN}Tunnel established! Server IP: ${CYAN}$tunnel_url${NC}"
-            else
-                echo -e "${YELLOW}Tunnel URL not found yet, check status.log manually${NC}"
-            fi
-        fi
-    fi
-    echo ""
-    echo -e "${CYAN}Minecraft server starting, please wait...${NC}"
-    echo ""
-    echo -e "${GREEN}=====================================================================${NC}"
-    echo ""
-    COMMON_JVM_FLAGS="-Xms512M -Xmx2G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -XX:+UseStringDeduplication -XX:+UseAES -XX:+UseAESIntrinsics -XX:UseSSE=4 -XX:AllocatePrefetchStyle=1 -XX:+UseLoopPredicate -XX:+RangeCheckElimination -XX:+EliminateLocks -XX:+DoEscapeAnalysis -XX:+UseCodeCacheFlushing -XX:+OptimizeStringConcat -XX:+UseCompressedOops -XX:+UseThreadPriorities -XX:+TrustFinalNonStaticFields -XX:+UseInlineCaches -XX:+RewriteBytecodes -XX:+RewriteFrequentPairs -XX:+UseNUMA -XX:-DontCompileHugeMethods -XX:+UseFPUForSpilling -XX:+UseNewLongLShift -XX:+UseXMMForArrayCopy -XX:+UseXmmI2D -XX:+UseXmmI2F -XX:+UseXmmLoadAndClearUpper -XX:+UseXmmRegToRegMoveAll -Dfile.encoding=UTF-8 -Djava.security.egd=file:/dev/urandom"
-    JAVA_CMD="java $COMMON_JVM_FLAGS -jar server.jar nogui"
-
-    if [[ "$VERSION" =~ ^1\.(17|18|19|20|21)(\.|$) ]]; then
-        JAVA_CMD="java $COMMON_JVM_FLAGS --add-modules jdk.incubator.vector -XX:UseAVX=2 -Xlog:async -jar server.jar nogui"
-    elif [[ "$VERSION" =~ ^1\.(8|9|10|11|12|13|14|15|16)(\.|$) ]]; then
-        JAVA_CMD="java $COMMON_JVM_FLAGS -XX:-UseBiasedLocking -XX:UseAVX=3 -jar server.jar nogui"
+        tunnel_url=$(grep -o 'url=tcp://[^[:space:]]*' "$root/status.log" 2>/dev/null | cut -d'=' -f2 | sed 's/tcp:\/\///' | head -1)
+        [ -n "$tunnel_url" ] && echo -e "${G}Tunnel established! Server IP: ${C}$tunnel_url${NC}" || echo -e "${Y}Check status.log for tunnel URL${NC}"
     fi
 
-    $JAVA_CMD
+    echo -e "\n${C}Starting Minecraft server...${NC}\n${G}=====================================================================${NC}\n"
+
+    base_flags="-Xms512M -Xmx2G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:InitiatingHeapOccupancyPercent=15 -XX:+UseStringDeduplication -XX:+UseCompressedOops -Dfile.encoding=UTF-8"
+
+    if [[ "$VERSION" =~ ^1\.(17|18|19|20|21) ]]; then
+        java $base_flags --add-modules jdk.incubator.vector -XX:UseAVX=2 -jar server.jar nogui
+    elif [[ "$VERSION" =~ ^1\.(8|9|10|11|12|13|14|15|16) ]]; then
+        java $base_flags -XX:-UseBiasedLocking -XX:UseAVX=3 -jar server.jar nogui
+    else
+        java $base_flags -jar server.jar nogui
+    fi
 done
