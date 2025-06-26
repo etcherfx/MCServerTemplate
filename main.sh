@@ -67,9 +67,9 @@ while true; do
     base_flags="-Xms512M -Xmx2G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:InitiatingHeapOccupancyPercent=15 -XX:+UseStringDeduplication -XX:+UseCompressedOops -Dfile.encoding=UTF-8"
 
     if [[ "$VERSION" =~ ^1\.(17|18|19|20|21) ]]; then
-        java $base_flags --add-modules jdk.incubator.vector -XX:UseAVX=2 -jar server.jar nogui
+        java $base_flags --add-modules jdk.incubator.vector -jar server.jar nogui
     elif [[ "$VERSION" =~ ^1\.(8|9|10|11|12|13|14|15|16) ]]; then
-        java $base_flags -XX:-UseBiasedLocking -XX:UseAVX=3 -jar server.jar nogui
+        java $base_flags -XX:-UseBiasedLocking -jar server.jar nogui
     else
         java $base_flags -jar server.jar nogui
     fi
