@@ -10,6 +10,8 @@
 
 **An easily deployable Minecraft server template for Replit.**
 
+A fork of SimerLol's [Minecraft Server Template](https://replit.com/@SimerLol/Minecraft-Server-Template)
+
 </div>
 
 ## 📖 Table of Contents
