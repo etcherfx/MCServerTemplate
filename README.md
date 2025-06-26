@@ -1,7 +1,8 @@
-<div align="center">
-  <img src="projectInfo/banner.png" alt="MCServerReplit Banner" width="800">
+<h1 align="center">
+  <img src="projectInfo/banner.png" alt="MCServerReplit Banner" width="850">
+</h1>
   
-  <br>
+<div align="center">
 
 [![CodeFactor](https://www.codefactor.io/repository/github/etcherfx/mcserverreplit/badge/main?style=for-the-badge)](https://www.codefactor.io/repository/github/etcherfx/mcserverreplit/overview/main)
 [![License](https://img.shields.io/github/license/etcherfx/MCServerReplit?style=for-the-badge)](https://github.com/etcherfx/MCServerReplit/blob/main/LICENSE)
