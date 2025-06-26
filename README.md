@@ -8,7 +8,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/etcherfx/MCServerReplit?style=for-the-badge)](https://github.com/etcherfx/MCServerReplit/issues)
 [![GitHub Release](https://img.shields.io/github/release/etcherfx/MCServerReplit?include_prereleases&style=for-the-badge)](https://github.com/etcherfx/MCServerReplit/releases/latest)
 
-**An easily deployable Minecraft server template**
+**An easily deployable Minecraft server template for Replit.**
 
 </div>
 
