@@ -29,7 +29,7 @@ download_if_missing() {
 
     show_title
     echo -e "By executing this script you agree to all licenses.\n${Y}Press Ctrl+C to disagree, Enter to continue.${NC}"
-    read -s
+    read -r -s
 
     echo -e "\n${B}Downloading ${SERVER^}...${NC}"
     case "${SERVER,,}" in
