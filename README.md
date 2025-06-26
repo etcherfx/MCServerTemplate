@@ -115,7 +115,9 @@ Click on the `Import from GitHub` button
 ## 🏃 Running the Server
 
 1. Run the repl and follow the instructions on the console
-2. Once the console displays `Done! For help, type "help"`, navigate to `status.log` and copy the IP address on `line 7` and enter it inside of Minecraft. The address should be something like `tcp://9.tcp.eu.ngrok.io:46797` and you want to copy IP part, which is the entire address **EXCEPT** the `tcp://` part.
+2. Once the console displays `Done! For help, type "help"`, scroll up to the top of the console output and copy the server address
+   - It should look something like `0.tcp.ngrok.io:12345`
+3. Paste the server address in your Minecraft client and join the server
 
 ## ⚡ Server Optimization
 

@@ -105,6 +105,18 @@ while true; do
         echo -e "${GREEN}Starting ngrok tunnel...${NC}"
         ./ngrok authtoken $ngrok_token >/dev/null 2>&1
         ./ngrok tcp --log=stdout 25565 >$root/status.log &
+
+        echo -e "${YELLOW}Waiting for ngrok tunnel to establish...${NC}"
+        sleep 1
+
+        if [ -f "$root/status.log" ]; then
+            tunnel_url=$(sed -n '7p' "$root/status.log" | grep -o 'url=tcp://[^[:space:]]*' | cut -d'=' -f2 | sed 's/tcp:\/\///')
+            if [ ! -z "$tunnel_url" ]; then
+                echo -e "${GREEN}Tunnel established! Server IP: ${CYAN}$tunnel_url${NC}"
+            else
+                echo -e "${YELLOW}Tunnel URL not found yet, check status.log manually${NC}"
+            fi
+        fi
     fi
     echo ""
     echo -e "${CYAN}Minecraft server starting, please wait...${NC}"
